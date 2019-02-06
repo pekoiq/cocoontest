@@ -5,11 +5,15 @@ class CropsController < ApplicationController
   # GET /crops.json
   def index
     @crops = Crop.all
+    @plantings = Planting.all
+    @varieties = Variety.all
   end
 
   # GET /crops/1
   # GET /crops/1.json
   def show
+    @crop = Crop.find(params[:id])
+
   end
 
   # GET /crops/new
@@ -19,6 +23,7 @@ class CropsController < ApplicationController
   end
     # GET /crops/1/edit
   def edit
+      @crop = Crop.find(params[:id])
   end
 
   # POST /crops
@@ -73,7 +78,7 @@ class CropsController < ApplicationController
    params
    .require(:crop)
   .permit(:name, :transplantordirectseed, :rowsperbed, :seedsperounce, :unit, :yield, :priceperunit, :seedsperrowfoot, :greenhouseweeks, :inrowspacing, :seedspercell, :cellsperflat,
-    plantings_attributes: [:crop_id, :planting, :bedfeet, :fielddate, :weeksuntilharvest, :weeksofharvest, :greehousedate, :firstharvest, :lastharvest, :weeklyyield, :_destroy,
-    varieties_attributes: [:crop_id, :planting_id, :variety, :percentageofplanting, :varietybedfeet, :transplantflats, :_destroy]])
+    plantings_attributes: [:id, :planting, :bedfeet, :fielddate, :weeksuntilharvest, :weeksofharvest, :greehousedate, :firstharvest, :lastharvest, :weeklyyield, :_destroy,
+    varieties_attributes: [:id, :variety, :percentageofplanting, :varietybedfeet, :transplantflats, :_destroy]])
 end
  end
