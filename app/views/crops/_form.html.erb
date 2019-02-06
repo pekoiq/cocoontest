@@ -1,0 +1,36 @@
+<%= simple_form_for @crop do |f| %>
+<%= f.error_notification %>
+
+
+    <div class="col-sm-offset-0 col-sm-6">
+      <div class="form-group">
+
+  <%= f.input :name %>
+  <%= f.input :transplantordirectseed %>
+  <%= f.input :rowsperbed %>
+  <%= f.input :seedsperounce %>
+  <%= f.input :unit %>
+  <%= f.input :yield %>
+  <%= f.input :priceperunit %>
+  <%= f.input :seedsperrowfoot %>
+  <%= f.input :greenhouseweeks %>
+  <%= f.input :inrowspacing %>
+  <%= f.input :seedspercell %>
+  <%= f.input :cellsperflat %>
+<div class="col-sm-offset-1">
+  <h3>Plantings</h3>
+  <div id='plantings'>
+    <div class="form-group">
+
+    <%= f.simple_fields_for :plantings do |planting| %>
+      <%= render 'planting_fields', :f => planting %>
+    <% end %>
+
+    <div class='links'>
+      <%= link_to_add_association 'add planting', f, :plantings %>
+    </div>
+    </div>
+  </div>
+  </div>
+  <%= f.submit 'Save' %>
+<% end %>

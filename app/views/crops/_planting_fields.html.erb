@@ -1,0 +1,28 @@
+
+<div class='nested-fields'>
+  <div class="form-group">
+    <%= f.input :planting %>
+    <%= f.input :bedfeet %>
+    <%= f.input :fielddate %>
+    <%= f.input :weeksuntilharvest %>
+    <%= f.input :weeksofharvest %>
+    <%= f.input :greehousedate %>
+    <%= f.input :firstharvest %>
+    <%= f.input :lastharvest %>
+    <%= f.input :weeklyyield %>
+    <div class="col-sm-offset-1">
+
+<h3>Varieties</h3>
+    <div class='varieites'>
+      <div class="form-group">
+      <%= f.simple_fields_for :varieties do |variety| %>
+   <%= render 'variety_fields', :f => variety %>
+ <% end %>
+ <div class='links'>
+   <%= link_to_add_association 'add variety', f, :varieties %>
+ </div>
+</div>
+</div>
+
+    <%= link_to_remove_association "remove planting", f %>
+</div>
