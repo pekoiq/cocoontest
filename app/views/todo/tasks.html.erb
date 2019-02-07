@@ -1,0 +1,58 @@
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th colspan="5"></th>
+      <th>crop</th>
+      <th colspan="5"></th>
+      <th>Planting</th>
+      <th colspan="5"></th>
+      <th>Date</th>
+      <th colspan="5"></th>
+      <th>Category</th>
+      <th colspan="5"></th>
+
+
+  </thead>
+
+
+  <% @croptasks.each do |x| %>
+
+ <td><%= x.task %></td>
+  <td colspan="5"></td>
+      <td><%= x.crop.name %></td>
+      <td colspan="5"></td>
+
+
+  </tr>
+<% end %>
+<thead>
+  <tr>
+    <th>crop</th>
+    <th colspan="5"></th>
+    <th>planting</th>
+    <th colspan="5"></th>
+    <th>Planting</th>
+    <th colspan="5"></th>
+    <th>Date</th>
+    <th colspan="5"></th>
+    <th>Category</th>
+    <th colspan="5"></th>
+
+
+</thead>
+
+
+<% @plantings.each do |x| %>
+
+<td><%= x.crop.name %></td>
+<td colspan="5"></td>
+<td><%= x.planting %></td>
+<td colspan="5"></td>
+
+
+</tr>
+<% end %>
+
+
+<%= link_to 'Back', crops_path %>

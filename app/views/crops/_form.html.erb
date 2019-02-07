@@ -18,6 +18,20 @@
   <%= f.input :seedspercell %>
   <%= f.input :cellsperflat %>
 <div class="col-sm-offset-1">
+  <h3>Tasks</h3>
+  <div id='croptasks'>
+    <div class="form-group">
+
+    <%= f.simple_fields_for :croptasks do |croptask| %>
+      <%= render 'croptask_fields', :f => croptask %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'add crop task', f, :croptasks %>
+    </div>
+    </div>
+    </div>
+
+
   <h3>Plantings</h3>
   <div id='plantings'>
     <div class="form-group">
@@ -32,5 +46,6 @@
     </div>
   </div>
   </div>
+
   <%= f.submit 'Save' %>
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_05_210635) do
+ActiveRecord::Schema.define(version: 2019_02_07_042638) do
 
   create_table "crops", force: :cascade do |t|
     t.string "name"
@@ -27,6 +27,30 @@ ActiveRecord::Schema.define(version: 2019_02_05_210635) do
     t.integer "cellsperflat"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "planting_id"
+    t.integer "croptask_id"
+  end
+
+  create_table "croptasks", force: :cascade do |t|
+    t.integer "crop_id"
+    t.string "task"
+    t.integer "weeksfromfielddate"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "planting_id"
+  end
+
+  create_table "croptasks_plantings", id: false, force: :cascade do |t|
+    t.integer "croptask_id", null: false
+    t.integer "planting_id", null: false
+  end
+
+  create_table "planting_croptasks", force: :cascade do |t|
+    t.integer "croptask_id"
+    t.integer "planting_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "plantings", force: :cascade do |t|
@@ -40,6 +64,16 @@ ActiveRecord::Schema.define(version: 2019_02_05_210635) do
     t.date "firstharvest"
     t.date "lastharvest"
     t.integer "weeklyyield"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "croptask_id"
+  end
+
+  create_table "tasktodos", force: :cascade do |t|
+    t.integer "crop_id"
+    t.integer "croptask_id"
+    t.date "date"
+    t.string "planting_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

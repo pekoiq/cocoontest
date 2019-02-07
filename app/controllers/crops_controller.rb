@@ -7,6 +7,8 @@ class CropsController < ApplicationController
     @crops = Crop.all
     @plantings = Planting.all
     @varieties = Variety.all
+    @croptasks = Croptask.all
+    @tasktodos = Tasktodo.all
   end
 
   # GET /crops/1
@@ -20,6 +22,7 @@ class CropsController < ApplicationController
   def new
     @crop = Crop.new
     @crop.plantings.build.varieties.build
+    @crop.croptasks.build
   end
     # GET /crops/1/edit
   def edit
@@ -78,7 +81,9 @@ class CropsController < ApplicationController
    params
    .require(:crop)
   .permit(:name, :transplantordirectseed, :rowsperbed, :seedsperounce, :unit, :yield, :priceperunit, :seedsperrowfoot, :greenhouseweeks, :inrowspacing, :seedspercell, :cellsperflat,
-    plantings_attributes: [:id, :planting, :bedfeet, :fielddate, :weeksuntilharvest, :weeksofharvest, :greehousedate, :firstharvest, :lastharvest, :weeklyyield, :_destroy,
-    varieties_attributes: [:id, :variety, :percentageofplanting, :varietybedfeet, :transplantflats, :_destroy]])
+    croptasks_attributes: [:id, :planting_id, :task, :weeksfromfielddate, :category, :_destroy],
+      plantings_attributes: [:id, :croptask_id, :planting, :bedfeet, :fielddate, :weeksuntilharvest, :weeksofharvest, :greehousedate, :firstharvest, :lastharvest, :weeklyyield, :_destroy,
+    varieties_attributes: [:id, :variety, :percentageofplanting, :varietybedfeet, :transplantflats, :_destroy,
+      ]])
 end
  end
