@@ -1,0 +1,58 @@
+<table>
+  <thead>
+    <tr>
+      <th>Crop</th>
+      <th colspan="5"></th>
+      <th>Variety</th>
+      <th colspan="5"></th>
+      <th>Seed Count</th>
+      <th colspan="5"></th>
+      <th>Ounces</th>
+      <th colspan="5"></th>
+      <th>Grams</th>
+      <th colspan="5"></th>
+      <th>Lbs.</th>
+      <th colspan="5"></th>
+
+  </thead>
+  <tbody>
+<% @varieties.each do |x| %>
+
+    <td><%= x.planting.crop.name %></td>
+    <td colspan="5"></td>
+  <td><%= x.variety %></td>
+  <td colspan="5"></td>
+    <td><%=
+    if x.planting.crop.transplantordirectseed == "transplant"
+count = x.planting.crop.seedspercell.to_i * x.planting.crop.cellsperflat.to_i * x.transplantflats.to_i
+else
+count = x.planting.crop.seedsperrowfoot.to_i * x.planting.crop.rowsperbed.to_i * x.varietybedfeet.to_i
+end
+%>
+</td>
+    <td colspan="5"></td>
+
+
+
+
+
+    <td><%=
+      if x.planting.crop.seedsperounce.to_i > 0
+    ounces = count / x.planting.crop.seedsperounce.to_i
+      end%></td>
+    <td colspan="5"></td>
+    <td><%=
+      grams = ounces.to_i * 28.3495
+        grams.round(0)%>
+
+      <td colspan="5"></td>
+    <td><%=
+        lbs = ounces.to_i * 0.00220462
+        lbs.round(2) %>
+      <td colspan="5"></td>
+
+
+  </tr>
+<% end %>
+</tbody>
+<%= link_to 'Back', crops_path %>

@@ -12,6 +12,18 @@
     <%= f.input :weeklyyield %>
     <div class="col-sm-offset-1">
 
+      <h3>Tasktodos</h3>
+          <div class='tasktodos'>
+            <div class="form-group">
+            <%= f.simple_fields_for :tasktodos do |tasktodos| %>
+         <%= render 'tasktodo_fields', :f => tasktodos %>
+       <% end %>
+       <div class='links'>
+         <%= link_to_add_association 'add task', f, :tasktodos %>
+       </div>
+      </div>
+      </div>
+
 <h3>Varieties</h3>
     <div class='varieites'>
       <div class="form-group">

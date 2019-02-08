@@ -1,5 +1,5 @@
 class Tasktodo < ApplicationRecord
-belongs_to :croptask
-has_many :plantings, through: :croptask
+belongs_to :planting, optional: true
+has_one :crop, through: :plantings
 
 end

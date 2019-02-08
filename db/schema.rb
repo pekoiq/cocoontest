@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_07_042638) do
+ActiveRecord::Schema.define(version: 2019_02_07_190023) do
 
   create_table "crops", force: :cascade do |t|
     t.string "name"
@@ -71,11 +71,14 @@ ActiveRecord::Schema.define(version: 2019_02_07_042638) do
 
   create_table "tasktodos", force: :cascade do |t|
     t.integer "crop_id"
-    t.integer "croptask_id"
     t.date "date"
     t.string "planting_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "task"
+    t.string "category"
+    t.string "location"
+    t.string "plantingname"
   end
 
   create_table "varieties", force: :cascade do |t|

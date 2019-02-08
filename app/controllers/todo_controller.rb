@@ -15,4 +15,22 @@ class TodoController < ApplicationController
 
   end
 
+  def seeds
+    @crops = Crop.all
+    @croptasks = Croptask.all
+    @plantings = Planting.all
+    @varieties = Variety.all
+  @tasktodos = Tasktodo.all
+
+  end
+
+  def greenhouse
+    @crops = Crop.all
+    @croptasks = Croptask.all
+    @plantings = Planting.all
+    @varieties = Variety.all
+  @tasktodos = Tasktodo.all
+
+  end
+
 end

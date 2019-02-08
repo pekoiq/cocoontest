@@ -19,6 +19,8 @@
       <th colspan="5"></th>
 
   </thead>
+  <tbody>
+
 <% @varieties.each do |x| %>
 
     <td><%= x.planting.crop.name %></td>
@@ -37,7 +39,9 @@
         <td colspan="5"></td>
         <td><%= x.planting.crop.seedsperrowfoot %>
           <td colspan="5"></td>
-          
+
   </tr>
 <% end %>
+</tbody>
+
 <%= link_to 'Back', crops_path %>

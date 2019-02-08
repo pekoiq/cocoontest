@@ -1,0 +1,42 @@
+<table>
+  <thead>
+    <tr>
+      <th>Crop</th>
+      <th colspan="5"></th>
+      <th>Planting</th>
+      <th colspan="5"></th>
+      <th>Variety</th>
+      <th colspan="5"></th>
+      <th>Greenhouse date</th>
+      <th colspan="5"></th>
+      <th>Transplant flats</th>
+      <th colspan="5"></th>
+      <th>Seeds per cell</th>
+      <th colspan="5"></th>
+      <th>Cells per flat</th>
+      <th colspan="5"></th>
+
+  </thead>
+  <tbody>
+
+<% @varieties.each do |x| %>
+
+    <td><%= x.planting.crop.name if x.planting.crop.transplantordirectseed == "transplant"%></td>
+    <td colspan="5"></td>
+  <td><%= x.planting.planting if x.planting.crop.transplantordirectseed == "transplant"%></td>
+  <td colspan="5"></td>
+    <td><%= x.variety if x.planting.crop.transplantordirectseed == "transplant"%></td>
+    <td colspan="5"></td>
+    <td><%= x.planting.greehousedate if x.planting.crop.transplantordirectseed == "transplant"%>
+      <td colspan="5"></td>
+    <td><%= x.transplantflats if x.planting.crop.transplantordirectseed == "transplant"%>
+      <td colspan="5"></td>
+      <td><%= x.planting.crop.seedspercell if x.planting.crop.transplantordirectseed == "transplant"%>
+        <td colspan="5"></td>
+        <td><%= x.planting.crop.cellsperflat if x.planting.crop.transplantordirectseed == "transplant"%>
+          <td colspan="5"></td>
+  </tr>
+  </tbody>
+
+<% end %>
+<%= link_to 'Back', crops_path %>
